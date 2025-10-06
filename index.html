@@ -27,11 +27,11 @@ async function upload() {
     formData.append('image', file);
 
     try {
-        const response = await fetch('https://imgdb.vezxa.com/api/upload', {
+        const response = await fetch('https://imgdb.vezxa.com/api/upload/api', {
             method: 'POST',
             body: formData,
             headers: {
-                'X-API-Key': 'imgdb_10093915c0fd4a35d131167985ed8b55c2d867c33bcfa54be339aa654292a0af'
+                'X-API-Key': 'imgdb_b13e969910cf47f91d3ec2ecffcd67550c78ffbc797ca24b0c48d0066cd27866'
             }
         });
 
