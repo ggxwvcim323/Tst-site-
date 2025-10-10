@@ -1,56 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test ImgDB API</title>
-<style>
-  body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-  button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
-  img { max-width: 200px; margin-top: 10px; border-radius: 8px; }
-</style>
+  <meta charset="UTF-8">
+  <title>Test Image</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #222;
+    }
+    img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 3px solid white;
+    }
+  </style>
 </head>
 <body>
-
-<h2>Uploader une image vers ImgDB</h2>
-<input type="file" id="fileInput">
-<br>
-<button onclick="upload()">Uploader</button>
-<div id="result"></div>
-
-<script>
-async function upload() {
-    const file = document.getElementById('fileInput').files[0];
-    if (!file) return alert('Choisis une image !');
-
-    const formData = new FormData();
-    formData.append('image', file);
-
-    try {
-        const response = await fetch('https://imgdb.vezxa.com/api/upload/api', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-API-Key': 'imgdb_b13e969910cf47f91d3ec2ecffcd67550c78ffbc797ca24b0c48d0066cd27866'
-            }
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            document.getElementById('result').innerHTML = `
-                ✅ Upload réussi !<br>
-                URL: <a href="${data.url}" target="_blank">${data.url}</a><br>
-                <img src="${data.url}" alt="Image uploadée">
-            `;
-        } else {
-            document.getElementById('result').innerHTML = `❌ Erreur : ${data.message || JSON.stringify(data)}`;
-        }
-    } catch (error) {
-        document.getElementById('result').innerHTML = `❌ Erreur réseau : ${error.message}`;
-    }
-}
-</script>
-
+  <img src="https://imgdb.vezxa.com/i/XeSmfNRC.jpeg" alt="Image de test">
 </body>
 </html>
